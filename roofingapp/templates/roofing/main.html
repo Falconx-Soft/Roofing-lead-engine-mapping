@@ -18,9 +18,7 @@
         display: flex;
     flex-direction: column;
     }
-    .gender-option{
-        padding: 8px;
-    }
+   
     .profile-submit-btn{
         font-size: initial;
     }
@@ -53,7 +51,7 @@ font-size: initial;
 }
 .form1_roof_subblock{
     background: cadetblue;
-    padding: 30px;
+    
     font-size: medium;
     font-weight: 600;
 
@@ -73,8 +71,56 @@ font-size: initial;
 .info_input{
     border: none;
     outline: none;
+    width: 100%;
+
 }
-   
+.category{
+    padding: 6px;
+    background: cadetblue;
+    cursor: pointer;
+}
+.estimate_type{
+    padding: 10px;
+}
+.insurance_company_options{
+    padding: 10px;
+}
+.severe_leaks_options{
+    padding: 10px;
+}
+.slope_options{
+    padding: 10px;
+}
+.stories_options{
+    padding: 10px;
+}
+.material_options{
+    padding: 10px;
+}
+.starting_time_options{
+    padding: 10px;
+}
+.conversation_options{
+    padding: 10px;
+}
+.instant_appointment_options{
+    padding: 10px;
+}
+.appointment_date_options{
+    padding: 10px;
+}
+.date_block{
+    display: flex;
+    margin-right: 3px;
+    flex-direction: column;
+    align-items: center;
+}
+.appointment_date_options{
+    cursor: pointer;
+}
+.inspection_time_options{
+    cursor: pointer;
+}
     @media(max-width:800px){
         .form-holder .package-holder{
             flex: 0 48%;
@@ -113,7 +159,7 @@ font-size: initial;
         
         <div class="form" >
             <input type="text" hidden value="" id="category_selected" name="category_selected">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
+            <div class="form1_roof_block" style="display: flex;justify-content: space-around;width: 100%;">
                 <div class="form1_roof_subblock">
                     <div class="category">Repair Roof</div>
                 </div>
@@ -147,7 +193,7 @@ font-size: initial;
             </path>
         </svg>
         <div class="example-profile-btn">Back</div>
-        <div class="step-holder">2/3</div>
+        
     </div>
     
     <div class="form">
@@ -208,7 +254,7 @@ font-size: initial;
                     <div class="platform-img">
                         <div>Phone</div>
                     </div>
-                    <Input class="info_input" name="phone"></Input>
+                    <Input type="tel" class="info_input" name="phone"></Input>
                 </div>
                 
             </div>
@@ -217,7 +263,7 @@ font-size: initial;
                     <div class="platform-img">
                         <div>Email</div>
                     </div>
-                    <Input class="info_input" name="email"></Input>
+                    <Input type="email" class="info_input" name="email"></Input>
                 </div>
                 
             </div>
@@ -380,7 +426,7 @@ font-size: initial;
                 </path>
             </svg>
             <div class="example-profile-btn">Back</div>
-            <div class="step-holder">4/4</div>
+            <!-- <div class="step-holder">4/4</div> -->
         </div>
         
         <h2 class="form-title">Please provide your best guess with the slope of your roof </h2>
@@ -421,7 +467,7 @@ font-size: initial;
                 </path>
             </svg>
             <div class="example-profile-btn">Back</div>
-            <div class="step-holder">4/4</div>
+            <!-- <div class="step-holder">4/4</div> -->
         </div>
         
         <h2 class="form-title">My home is: </h2>
@@ -637,7 +683,7 @@ font-size: initial;
         <div class="form" >
             <input type="text" hidden value="" id="appointment_date" name="appointment_date">
 
-            <div class="form1_roof_block appointment_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
+            <div class="form1_roof_block appointment_block" style=" display: flex;justify-content: space-around;width: 100%;">
                
                 
                
@@ -962,6 +1008,7 @@ $('.form_3_submit').click(function () {
             $('#category_selected').val(str)
         
         console.log('category_selected', $('#category_selected').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
         $(this).parent().css('background', 'yellow')
         });
     // *********************************************************************** End
@@ -979,7 +1026,9 @@ $('.form_3_submit').click(function () {
 
             $('#estimate_method').val(str)
         
-        console.log('category_selected', $('#estimate_method').val())
+        console.log('Estimation', $('#estimate_method').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
+        $(this).parent().css('background', 'yellow')
         });
     // *********************************************************************** End
  // *********************************************************************** Insurance Company
@@ -996,7 +1045,10 @@ $('.form_3_submit').click(function () {
 
             $('#insurance_company').val(str)
         
-        console.log('category_selected', $('#insurance_company').val())
+        console.log('Insurance', $('#insurance_company').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
+        $(this).parent().css('background', 'yellow')
+        
         });
     // *********************************************************************** End
  // *********************************************************************** Severe Leaks
@@ -1014,6 +1066,8 @@ $('.form_3_submit').click(function () {
             $('#severe_leaks').val(str)
         
         console.log('severe_leaks', $('#severe_leaks').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
+        $(this).parent().css('background', 'yellow')
         });
     // *********************************************************************** End
 
@@ -1032,6 +1086,8 @@ $('.form_3_submit').click(function () {
             $('#slope').val(str)
         
         console.log('slope', $('#slope').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
+        $(this).parent().css('background', 'yellow')
         });
     // *********************************************************************** End
 
@@ -1050,6 +1106,8 @@ $('.form_3_submit').click(function () {
             $('#no_of_stories').val(str)
         
         console.log('no_of_stories', $('#no_of_stories').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
+        $(this).parent().css('background', 'yellow')    
         });
     // *********************************************************************** End
        // *********************************************************************** material
@@ -1067,6 +1125,8 @@ $('.form_3_submit').click(function () {
             $('#material').val(str)
         
         console.log('material', $('#material').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
+        $(this).parent().css('background', 'yellow') 
         });
     // *********************************************************************** End
      // *********************************************************************** starting time 
@@ -1084,6 +1144,8 @@ $('.form_3_submit').click(function () {
             $('#starting_time').val(str)
         
         console.log('material', $('#starting_time').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
+        $(this).parent().css('background', 'yellow')
         });
     // *********************************************************************** End
           // *********************************************************************** conversation
@@ -1101,6 +1163,8 @@ $('.form_3_submit').click(function () {
             $('#conversation').val(str)
         
         console.log('conversation', $('#conversation').val())
+        $(this).parent().parent().children().css('background', 'cadetblue')
+        $(this).parent().css('background', 'yellow')
         });
     // *********************************************************************** End
      // *********************************************************************** appointment
