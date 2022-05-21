@@ -401,7 +401,7 @@ for (let i = 0; i < 6; i++) {
     var dd = d.getDate()+i;
     console.log('dayname', day_name)
     console.log('date', dd)
-    $('#dates').append('<div class="multiselection-div-option" data-toggle="modal" data-target="#myModal"><img src="{% static "images/option.jpeg" %}" id="" alt="no image" class="img-option"><p id="">'+day_name+':'+dd+'</p></div>')
+    $('#dates').append('<div class="multiselection-div-option" data-toggle="modal" data-target="#myModal"><img src="./static/images/option.jpeg" id="" alt="no image" class="img-option"><p id="">'+day_name+':'+dd+'</p></div>')
 
 }
 $('.date_block').click(function () {
