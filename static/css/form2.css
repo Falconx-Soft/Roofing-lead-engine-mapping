@@ -1,0 +1,158 @@
+body{
+    margin: 0px;
+    font-family: 'Poppins' !important;
+}
+
+.container-div{
+    display: flex;
+}
+
+.active-div{
+    display: block !important;
+}
+
+.inactive-div{
+    display: none !important;
+}
+
+/**************************************** left portion */
+.detail-div{
+    background-color: rgba(33, 33, 33, 0.751);
+    width: 25%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.logo{
+    color: rgb(255, 179, 0);
+    margin: 0px;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.price-tag{
+    background-color: rgb(255, 179, 0);
+    margin-top: 50px;
+    padding: 20px;
+    width: 244px;
+}
+
+.title{
+    text-align: center;
+    font-size: small;
+    color: rgba(33, 33, 33, 0.751);
+}
+
+.price{
+    font-size: xx-large;
+    margin: 0px;
+}
+
+.price-div{
+    display: flex;
+    justify-content: center;
+}
+
+.price-div-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price{
+    margin-right: 20px;
+    color: rgba(33, 33, 33, 0.751);
+}
+
+.price-detail{
+    margin: 0px;
+    font-size: small;
+    color: rgba(33, 33, 33, 0.751);
+}
+
+/**************************************** left portion end */
+
+/********************************************** Right portion */
+
+.input-div{
+    padding: 20px;
+    width: 75%;
+}
+
+.input-div-logo{
+    display: flex;
+    justify-content: right;
+}
+
+.input-div-logo>p{
+    color: gray;
+}
+
+.input-inner-div{
+    margin-top: 15%;
+    margin-left: 77px;
+}
+
+.input-title{
+    color: rgba(33, 33, 33, 0.751);
+    margin: 0px;
+}
+
+.input-field{
+    border: none;
+    padding: 20px;
+    padding-left: 0px;
+    border-bottom: 1px solid rgba(33, 33, 33, 0.751);
+    font-size: large;
+    margin-bottom: 20px;
+}
+
+.input-field:focus{
+    outline: none;
+}
+
+.continue-btn{
+    background-color: rgba(33, 33, 33, 0.751);
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+.yellow{
+    color: rgb(255, 179, 0);
+    margin-right: 5px;
+}
+
+/********************************************** right portion end */
+
+/******************************************** Multi selection **/
+
+
+.multiselection-div{
+    margin-top: 20px;
+    display: flex;
+}
+
+.multiselection-div-option{
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.img-option{
+    height: 76px;
+}
+
+.multi-input-div{
+    margin-bottom: 20px;
+}
+
+/******************************************** Multi selection end **/

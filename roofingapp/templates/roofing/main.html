@@ -5,6 +5,7 @@
 <!-- Specific CSS goes HERE -->
 {% block extrastyle %}
 <link rel="stylesheet" href="{% static '/css/main.css' %}">
+<link rel="stylesheet" href="{% static '/css/form2.css' %}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <style>
@@ -140,610 +141,365 @@ font-size: initial;
 
 {% block content %}	
 
-<form action="{% url 'home' %}" method="POST" enctype="multipart/form-data" class="roofing_form">
-    {% csrf_token %}
-    <!-- <input type="hidden" name="influencer_username_3"
-                value="{{influencer_username_2}}"> -->
-    <!-- form1 -->
-    <div class="form-holder active" data-step="1">
-        <!-- <div class="top-btn-holder" style="visibility:hidden;">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">View Example Profile</div> -->
-        <!-- </div> -->
-        
-        <h2 class="form-title">I am Looking For:</h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="category_selected" name="category_selected">
-            <div class="form1_roof_block" style="display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock">
-                    <div class="category">Repair Roof</div>
-                </div>
-                <div class="form1_roof_subblock">
-                   <div class="category"> Replace Roof</div>
-                </div>
-                <div class="form1_roof_subblock">
-                    <div class="category">Install New Roof</div>
-                    <div class="">(New Construction)</div>
-                </div>
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_1_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-    <!-- form7 -->
-<div class="form-holder " data-step="2" style=" width: 75%;">
-    <div class="top-btn-holder">
-        <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-                d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-            </path>
-        </svg>
-        <div class="example-profile-btn">Back</div>
-        
-    </div>
-    
-    <div class="form">
-        <div class="price_ranges">
-            <div class="price_range"></div>
-            <div>Per Sq. Ft.</div>
-        </div>
-        <div style="display: flex;width: 60%;     margin-top: 60px;">
-            <div style="    display: flex;width: 100%;">
-                <input type="text" name="zipcode" id="" placeholder="Zip Code" style="    margin: 4% auto; width: 100%;">
-            </div>
-            <div style="width: 100%;">
-                <button type="button" class="submit  form_2_submit">Continue</button>
-
-            </div>
-            
-
-        </div>
-
-        
-   </div>
-</div>
-   
-    <div class="form-holder" data-step="3" style="">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <div class="step-holder">3/3</div>
-        </div>
-        <h4 class="form-title" style="    font-size: large;">Where Can we Email Your instant quote and bonus savings</h4  >
-        <div class="form">
-           
-            <div class="platform-holder">
-                <div class="platform-option" style="">
-                    <div class="platform-img">
-                        <div>First Name</div>
+    <div class="container-div">
+        <div class="detail-div">
+            <h1 class="logo">Logo</h1>
+            <div class="price-tag">
+                <p class="title">PRICE RANGE</p>
+                <div class="price-div">
+                    <div class="price-div-inner">
+                        <h4 class="price"><b id="low-price">$0</b></h4>
+                        <p class="price-detail">per sq. ft</p>
                     </div>
-                    <Input class="info_input" name="first_name"></Input>
-                </div>
-                
-            </div>
-
-            <div class="platform-holder">
-                <div class="platform-option" style="">
-                    <div class="platform-img">
-                        <div>Last Name</div>
+                    <h4 class="price"><b> - </b></h4>
+                    <div class="price-div-inner">
+                        <h4 class="price"><b id="high-price">$0</b></h4>
+                        <p class="price-detail">per sq. ft</p>
                     </div>
-                    <Input class="info_input" name="last_name" ></Input>
                 </div>
-                
             </div>
-            <div class="platform-holder">
-                <div class="platform-option" style="">
-                    <div class="platform-img">
-                        <div>Phone</div>
+        </div>
+        <div class="input-div">
+            <div class="input-div-logo">
+                <p>Logo</p>
+            </div>
+            <form action="{% url 'home' %}" method="POST" enctype="multipart/form-data" id="roofing_form">
+                {% csrf_token %}
+                <div class="input-inner-div">
+
+                    <!------------------------------------------- Selecting category -->
+
+                    <div class="input-area active-div" id="category-selection">
+                        <h2 class="input-title">I am Looking For:</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="category">
+                                <img src="{% static 'images/option.jpeg' %}" id="category-img" alt="no image" class="img-option">
+                                <p id="category-selected">Repair Roof</p>
+                            </div>
+                            <div class="multiselection-div-option" id="category">
+                                <img src="{% static 'images/option.jpeg' %}" id="category-img" alt="no image" class="img-option">
+                                <p id="category-selected">Replace Roof</p>
+                            </div>
+                            <div class="multiselection-div-option" id="category">
+                                <img src="{% static 'images/option.jpeg' %}" id="category-img" alt="no image" class="img-option">
+                                <p id="category-selected" style="margin-bottom: 0px;">Install New Roof</p>
+                                <p style="width: 112px; margin-top: 0px;">(New Construction)</p>
+                            </div>
+
+                            <input type="text" hidden value="" id="category-name" name="category_selected">
+                        </div> 
                     </div>
-                    <Input type="tel" class="info_input" name="phone"></Input>
-                </div>
-                
-            </div>
-            <div class="platform-holder">
-                <div class="platform-option" style="">
-                    <div class="platform-img">
-                        <div>Email</div>
+
+                    <!------------------------------------------- Zip code -------------->
+
+                    <div class="input-area inactive-div" id="zip-code-selection">
+                        <h2 class="input-title">What's your zip code?</h2>
+                        <input class="input-field" name="zipcode" id="zip-code-entered" type="number" placeholder="Type your answer here...">
                     </div>
-                    <Input type="email" class="info_input" name="email"></Input>
-                </div>
-                
-            </div>
 
-            <button type="button" class="submit  form_3_submit">Continue</button>
-        </div>
-    </div>
-    <div class="form-holder " data-step="4">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            
-        </div>
-        
-        <h2 class="form-title">For more accurate estimate</h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="estimate_method">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock">
-                    <div class="estimate_type">Schedule Consultation</div>
-                </div>
-                <div class="form1_roof_subblock">
-                   <div class="estimate_type"> Get an Instant quote</div>
-                </div>
-               
+                    <!------------------------------------------- Details ---------------->
 
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_4_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-
-    <div class="form-holder  " data-step="5">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-        </div>
-        
-        <h2 class="form-title">Will We be working With your insurance company</h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="insurance_company" name="insurance_company">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock">
-                    <div class="insurance_company_options">Yes </div>
-                </div>
-                <div class="form1_roof_subblock">
-                   <div class="insurance_company_options"> No</div>
-                </div>
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_5_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-    <div class="form-holder  " data-step="6">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-           
-        </div>
-        
-        <h2 class="form-title">What is the approximate size of your home in sq ft?</h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="size_of_house" >
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock">
-                    <input type="text" name="size_of_house">
-                </div>
-               
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_6_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-    <div class="form-holder  " data-step="7">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <div class="step-holder">4/4</div>
-        </div>
-        
-        <h2 class="form-title">Are you aware of any leaks or severe damage </h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="severe_leaks" name="severe_leaks">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock">
-                    <div class="severe_leaks_options">Yes </div>
-                </div>
-                <div class="form1_roof_subblock">
-                   <div class="severe_leaks_options"> No</div>
-                </div>
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_7_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-
-    <div class="form-holder  " data-step="8">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <!-- <div class="step-holder">4/4</div> -->
-        </div>
-        
-        <h2 class="form-title">Please provide your best guess with the slope of your roof </h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="slope" name="slope">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock">
-                    <div class="slope_options">Low </div>
-                </div>
-                <div class="form1_roof_subblock">
-                   <div class="slope_options"> Mid</div>
-                </div>
-                <div class="form1_roof_subblock">
-                    <div class="slope_options"> High</div>
-                 </div>
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_8_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-
-    <div class="form-holder  " data-step="9">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <!-- <div class="step-holder">4/4</div> -->
-        </div>
-        
-        <h2 class="form-title">My home is: </h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="no_of_stories" name="no_of_stories">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="stories_options">One Story </div>
-                </div>
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                   <div class="stories_options" > Two Story</div>
-                </div>
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="stories_options"> Two story with basement</div>
-                 </div>
-                 <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="stories_options"> Three Story</div>
-                 </div>
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_9_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-
-    <div class="form-holder  " data-step="10">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <div class="step-holder"></div>
-        </div>
-        
-        <h2 class="form-title">What material quality would you like to use?  </h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="material" name="material">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="material_options">Good - 7 year guarantee </div>
-                </div>
-                <div class="form1_roof_subblock"style="margin-right: 3px;">
-                   <div class="material_options" > Better - 15 year guarantee</div>
-                </div>
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="material_options"> Best - 30-year guarantee</div>
-                 </div>
-                
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_10_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-
-    <div class="form-holder  " data-step="11">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <div class="step-holder"></div>
-        </div>
-        
-        <h2 class="form-title">How soon would you like to get started?   </h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="starting_time" name="starting_time">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="starting_time_options">Immediately </div>
-                </div>
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                   <div class="starting_time_options" > 1-3 Months</div>
-                </div>
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="starting_time_options"> 3+ Months</div>
-                 </div>
-                
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_11_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-
-    <div class="form-holder  " data-step="12">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <div class="step-holder"></div>
-        </div>
-        
-        <h2 class="form-title">Are you interested in a conversation with our financing partners  </h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="conversation" name="conversation">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="conversation_options">Yes </div>
-                </div>
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                   <div class="conversation_options" >No</div>
-                </div>
-               
-                
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <button type="button" class="submit  form_12_submit">Continue</button>
-               
-          
-        </div> 
-
-    </div>
-
-    <div class="form-holder  " data-step="13">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <div class="step-holder"></div>
-        </div>
-        
-        <h2 class="form-title">Would you like to choose a day in the near future to have us out for an on-site inspection   </h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="instant_appointment">
-            <div class="form1_roof_block" style="cursor: pointer;    display: flex;justify-content: space-around;width: 100%;">
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                    <div class="instant_appointment_options form_13_submit_yes">Yes </div>
-                </div>
-                <div class="form1_roof_subblock" style="margin-right: 3px;">
-                   <div class="instant_appointment_options form_13_submit_no" >No</div>
-                </div>
-               
-                
-               
-
-            </div>
-           
-            
-           
-    
-    
-           
-                <!-- <button type="button" class="submit  form_12_submit">Continue</button> -->
-               
-          
-        </div> 
-
-    </div>
-
-    <div class="form-holder inspection_form_holder  " data-step="14">
-        <div class="top-btn-holder">
-            <svg class="back-btn" onclick="nextPrev(-1)" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M19 11H7.83l4.882-4.882a1 1 0 000-1.413h-.005a1 1 0 00-1.408 0L4.705 11.3a1 1 0 000 1.41L11.3 19.3a1 1 0 001.41 0 1 1 0 000-1.41L7.83 13H19a1 1 0 001-1 1 1 0 00-1-1z">
-                </path>
-            </svg>
-            <div class="example-profile-btn">Back</div>
-            <div class="step-holder"></div>
-        </div>
-        
-        <h2 class="form-title">Schedule Inspection Date   </h2>
-        
-        <div class="form" >
-            <input type="text" hidden value="" id="appointment_date" name="appointment_date">
-
-            <div class="form1_roof_block appointment_block" style=" display: flex;justify-content: space-around;width: 100%;">
-               
-                
-               
-                
-               
-
-            </div>
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                
-                  <!-- Modal content-->
-                  <div class="modal-content" style="    display: flex;flex-direction: column;text-align: center;">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal"></button>
-                      <h4 class="modal-title">Inspection Date</h4>
+                    <div class="input-area inactive-div" id="detail-selection">
+                        <div class="multi-input-div">
+                            <h2 class="input-title">What's your first name</h2>
+                            <input class="input-field" name="first_name" id="first-name-entered" type="text" placeholder="Type your answer here...">
+                        </div>
+                        <div class="multi-input-div">
+                            <h2 class="input-title">What's your last name</h2>
+                            <input class="input-field" name="last_name" id="last-name-entered" type="text" placeholder="Type your answer here...">
+                        </div>
+                        <div class="multi-input-div">
+                            <h2 class="input-title">What's your phone number</h2>
+                            <input class="input-field" name="phone" id="phone-entered" type="text" placeholder="Type your answer here...">
+                        </div>
+                        <div class="multi-input-div">
+                            <h2 class="input-title">What's your email</h2>
+                            <input class="input-field" name="email" id="email-entered" type="text" placeholder="Type your answer here...">
+                        </div>
                     </div>
-                    <div class="modal-body">
-                      <p>Please Select a time:</p>
-                      <input type="text" hidden name="inspection_time" class="inspection_time">
-                      <div style="    display: flex;justify-content: space-around;">
-                          <div>
-                            <div style="font-weight: 600;" class="inspection_time_options">Morning</div>
-                            <div>8-10am</div>
 
+                    <!------------------------------------------- Acurate Estimation ---------------->
+
+                    <div class="input-area inactive-div" id="acurate-estimation">
+                        <h2 class="input-title">For more accurate estimate</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="acurate-estimation-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="acurate-estimation-img" alt="no image" class="img-option">
+                                <p id="acurate-estimation-selected">Schedule Consultation</p>
+                            </div>
+                            <div class="multiselection-div-option" id="acurate-estimation-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="acurate-estimation-img" alt="no image" class="img-option">
+                                <p id="acurate-estimation-selected">Get an Instant quote</p>
+                            </div>
+
+                            <input type="text" hidden value="" id="accuration-type">
+                        </div> 
+                        
+                    </div>
+
+                    <!------------------------------------------- Schedule Consultation ---------------->
+
+                    <div class="input-area inactive-div" id="schedule-consultation">
+                        <h2 class="input-title">Schedule Consultation</h2>
+                        
+                        <div class="multiselection-div" id="dates">
+
+                        </div> 
+
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                            
+                              <!-- Modal content-->
+                              <div class="modal-content" style="    display: flex;flex-direction: column;text-align: center;">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal"></button>
+                                  <h4 class="modal-title">Inspection Date</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Please Select a time:</p>
+                                  <input type="text" hidden name="inspection_time" id="inspection_time">
+                                  <div style="    display: flex;justify-content: space-around;">
+                                      <div>
+                                        <div style="font-weight: 600;" class="inspection_time_options">Morning</div>
+                                        <div>8-10am</div>
+            
+                                      </div>
+                                      <div>
+                                        <div style="font-weight: 600;" class="inspection_time_options">Afternoon</div>
+                                        <div>12-2pm</div>
+            
+                                      </div>
+                                      <div>
+                                        <div style="font-weight:600 ;" class="inspection_time_options">Evening</div>
+                                        <div>4-6pm</div>
+            
+                                      </div>
+                                     
+                                  </div>
+                                  <button type="button" class="btn btn-default" >Schedule my Free Consultation</button>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  
+                                </div>
+                              </div>
+                              
+                            </div>
                           </div>
-                          <div>
-                            <div style="font-weight: 600;" class="inspection_time_options">Afternoon</div>
-                            <div>12-2pm</div>
-
-                          </div>
-                          <div>
-                            <div style="font-weight:600 ;" class="inspection_time_options">Evening</div>
-                            <div>4-6pm</div>
-
-                          </div>
-                         
-                      </div>
-                      <button type="button" class="btn btn-default" >Schedule my Free Consultation</button>
+                        
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      
+
+                    <!------------------------------------------- working With your insurance company ------>
+
+                    <div class="input-area inactive-div" id="instant-quote">
+                        <h2 class="input-title">Will We be working With your insurance company</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="work-insurance-company-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="work-insurance-company-option-img" alt="no image" class="img-option">
+                                <p id="work-insurance-company-selection">Yes</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="work-insurance-company-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="work-insurance-company-option-img" alt="no image" class="img-option">
+                                <p id="work-insurance-company-selection">No</p>
+                            </div>
+
+                            <input type="text" hidden value="" id="instant-quote-selected" name="insurance_company">
+                        </div> 
+                        
                     </div>
-                  </div>
-                  
+
+                    <!------------------------------------------- approximate size -------------->
+
+                    <div class="input-area inactive-div" id="house-size">
+                        <h2 class="input-title">What is the approximate size of your home in sq ft?</h2>
+                        <input class="input-field" name="size_of_house" id="size_of_house" type="text" placeholder="Type your answer here...">
+                    </div>
+
+                    <!------------------------------------------- severe damage ---------------->
+
+                    <div class="input-area inactive-div" id="severe-damage">
+                        <h2 class="input-title">Are you aware of any leaks or severe damage</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="severe-damage-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="severe-damage-img" alt="no image" class="img-option">
+                                <p id="severe-damage-selection">Yes</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="severe-damage-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="severe-damage-img" alt="no image" class="img-option">
+                                <p id="severe-damage-selection">No</p>
+                            </div>
+
+                            <input type="text" hidden value="" id="severe-damage-selected" name="severe_leaks">
+                        </div> 
+                        
+                    </div>
+
+                    <!------------------------------------------- Roof slope ---------------->
+
+                    <div class="input-area inactive-div" id="roof-slope">
+                        <h2 class="input-title">Please provide your best guess with the slope of your roof</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="roof-slope-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="roof-slope-img" alt="no image" class="img-option">
+                                <p id="roof-slope-selection">Low</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="roof-slope-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="roof-slope-img" alt="no image" class="img-option">
+                                <p id="roof-slope-selection">Mid</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="roof-slope-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="roof-slope-img" alt="no image" class="img-option">
+                                <p id="roof-slope-selection">High</p>
+                            </div>
+
+                            <input type="text" hidden value="" id="roof-slope-selected" name="slope">
+                        </div> 
+                        
+                    </div>
+
+                    <!------------------------------------------- My home story ---------------->
+
+                    <div class="input-area inactive-div" id="home-story">
+                        <h2 class="input-title">My home is</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="home-story-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="home-story-img" alt="no image" class="img-option">
+                                <p id="home-story-selection">One Story</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="home-story-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="home-story-img" alt="no image" class="img-option">
+                                <p id="home-story-selection">Two Story</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="home-story-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="home-story-img" alt="no image" class="img-option">
+                                <p id="home-story-selection">Two story with basement</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="home-story-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="home-story-img" alt="no image" class="img-option">
+                                <p id="home-story-selection">Three Story</p>
+                            </div>
+
+                            <input type="text" hidden value="" id="home-story-selected" name="no_of_stories">
+                        </div> 
+                        
+                    </div>
+
+                    <!------------------------------------------- material quality ---------------->
+
+                    <div class="input-area inactive-div" id="material-quality">
+                        <h2 class="input-title">What material quality would you like to use?</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="material-quality-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="material-quality-img" alt="no image" class="img-option">
+                                <p id="material-quality-selection">Good - 7 year guarantee</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="material-quality-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="material-quality-img" alt="no image" class="img-option">
+                                <p id="material-quality-selection">Better - 15 year guarantee</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="material-quality-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="material-quality-img" alt="no image" class="img-option">
+                                <p id="material-quality-selection">Best - 30-year guarantee</p>
+                            </div>
+
+                            <input type="text" hidden value="" id="material-quality-selected" name="material">
+                        </div> 
+                        
+                    </div>
+
+                    <!------------------------------------------- get started? ---------------->
+
+                    <div class="input-area inactive-div" id="get-started">
+                        <h2 class="input-title">How soon would you like to get started?</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="get-started-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="get-started-img" alt="no image" class="img-option">
+                                <p id="get-started-selection">Immediately</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="get-started-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="get-started-img" alt="no image" class="img-option">
+                                <p id="get-started-selection">1-3 Months</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="get-started-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="get-started-img" alt="no image" class="img-option">
+                                <p id="get-started-selection">3+ Months</p>
+                            </div>
+
+                            <input type="text" hidden value="" id="get-started-selected" name="starting_time">
+                        </div> 
+                        
+                    </div>
+
+                    <!------------------------------------------- financing partners ---------------->
+
+                    <div class="input-area inactive-div" id="financing-partners">
+                        <h2 class="input-title">Are you interested in a conversation with our financing partners</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="financing-partners-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="financing-partners-img" alt="no image" class="img-option">
+                                <p id="financing-partners-selection">Yes</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="financing-partners-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="financing-partners-img" alt="no image" class="img-option">
+                                <p id="financing-partners-selection">No</p>
+                            </div>
+
+
+                            <input type="text" hidden value="" id="financing-partners-selected" name="conversation">
+                        </div> 
+                        
+                    </div>
+
+                    <!------------------------------------------- choose a day ---------------->
+
+                    <div class="input-area inactive-div" id="choose-a-day">
+                        <h2 class="input-title">Would you like to choose a day in the near future to have us out for an on-site inspection</h2>
+                        
+                        <div class="multiselection-div">
+                            <div class="multiselection-div-option" id="choose-a-day-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="choose-a-day-img" alt="no image" class="img-option">
+                                <p id="choose-a-day-selection">Yes</p>
+                            </div>
+
+                            <div class="multiselection-div-option" id="choose-a-day-option">
+                                <img src="{% static 'images/option.jpeg' %}" id="choose-a-day-img" alt="no image" class="img-option">
+                                <p id="choose-a-day-selection">No</p>
+                            </div>
+
+
+                            <input type="text" hidden value="" id="choose-a-day-selected" name="material">
+                        </div> 
+                        
+                    </div>
+
+
+                    <button class="continue-btn" type="button" id="next-option"><i class="fa-solid fa-circle-check yellow"></i>CONTINUE</button>
                 </div>
-              </div>
-           
-            
-           
-    
-    
-           
-                <!-- <button type="button" class="submit  form_12_submit">Continue</button> -->
-               
-          
-        </div> 
-
+            </form>
+        </div>
     </div>
-</form>
+
 
 {% endblock content %}
 
@@ -751,503 +507,7 @@ font-size: initial;
 {% block extrajavascript %}
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script>
-    // $(document).ready(function () {
-    // navbar
-    $(".dashboard-menu-holder").hover(function () {
-        $('.dashboard-menu').show();
-    }, function () {
-        $('.dashboard-menu').hide();
-    });
-    // allforms
-    $('.profile-submit-btn').click(function () {
- 
-        var active = $(".form-holder.active").attr("data-step")
-        var next = parseInt(active) + 1
-        console.log(next)
-        $("[data-step]").removeClass('active')
-        var next_select = `[data-step=${next}]`
-        $(next_select).addClass("active")
 
-
-    });
-    $('.back-btn').click(function () {
-        var active = $(".form-holder.active").attr("data-step")
-        var previous = parseInt(active) - 1
-        console.log(previous)
-        $("[data-step]").removeClass('active')
-        var previous_select = `[data-step=${previous}]`
-        $(previous_select).addClass("active")
-
-
-    });
-    // form 1
-   
-    $('.form_1_submit').click(function () {
-           
-    var active = $(".form-holder.active").attr("data-step")
-            var next = parseInt(active) + 1
-            console.log(next)
-            $("[data-step]").removeClass('active')
-            var next_select = `[data-step=${next}]`
-            $(next_select).addClass("active")
-      console.log(' input::::::::::::::::::')
-      if ($('#category_selected').val() == 'Repair Roof'){
-          console.log('category is Repair Roof')
-          $('.price_range').html('$1.48 - $5.12')
-
-      }
-      var category_selected= $('#category_selected').val()
-      if (category_selected.includes('Replace')){
-          console.log('category is Replace Roof')
-          $('.price_range').html('$2 - $6.12')
-
-      }
-      if ($('#category_selected').val() == 'Install New Roof'){
-          console.log('category is Install New Roof')
-          $('.price_range').html('$3 - $7.12')
-
-      }
-   })
-   
-   //  ___________________________________________________form 2
-    $('.form_2_submit').click(function () {
-            
-    var active = $(".form-holder.active").attr("data-step")
-            var next = parseInt(active) + 1
-            console.log(next)
-            $("[data-step]").removeClass('active')
-            var next_select = `[data-step=${next}]`
-            $(next_select).addClass("active")
-      console.log(' input::::::::::::::::::')
-   })
-// ________________________________________________________form 3
-$('.form_3_submit').click(function () {
-           
-    var active = $(".form-holder.active").attr("data-step")
-            var next = parseInt(active) + 1
-            console.log(next)
-            $("[data-step]").removeClass('active')
-            var next_select = `[data-step=${next}]`
-            $(next_select).addClass("active")
-      console.log(' input::::::::::::::::::')
-   })
-   
-    // ____________________________________________________________________________ form 4
-    $('.form_4_submit').click(function () {
-//            
-    var active = $(".form-holder.active").attr("data-step")
-           
-      console.log(' input::::::::::::::::::')
-      estimate=$('#estimate_method').val()
-      if (estimate.includes('Instant')){
-        var next = parseInt(active) + 1
-            console.log(next)
-            $("[data-step]").removeClass('active')
-            var next_select = `[data-step=${next}]`
-            $(next_select).addClass("active")
-          console.log('category is Get an Instant quote')
-          
-
-      }
-      if (estimate.includes('Consultation')){
-
-          console.log('category is Get an Schedule quote')
-          var next = 14
-            console.log(next)
-            $("[data-step]").removeClass('active')
-            var next_select = `[data-step=${next}]`
-            $(next_select).addClass("active")
-          console.log('category is Get an Instant quote')
-          
-
-      }
-          
-
-         })
- // ____________________________________________________________________________ Instant form 1
- $('.form_5_submit').click(function () {
-//            
-    var active = $(".form-holder.active").attr("data-step")
-           
-        var next = parseInt(active) + 1
-            console.log(next)
-            $("[data-step]").removeClass('active')
-            var next_select = `[data-step=${next}]`
-            $(next_select).addClass("active")
-          console.log('category is Get an Instant quote')
-          
-
-      
-   })
-    // ____________________________________________________________________________ Instant form 2
- $('.form_6_submit').click(function () {
-//            
-    var active = $(".form-holder.active").attr("data-step")
-           
-        var next = parseInt(active) + 1
-            console.log(next)
-            $("[data-step]").removeClass('active')
-            var next_select = `[data-step=${next}]`
-            $(next_select).addClass("active")
-          console.log('category is Get an Instant quote')
-          
-
-      
-   })
-     // #################################################
-    // form 7 
-    $('.form_7_submit').click(function () {
-           
-           var active = $(".form-holder.active").attr("data-step")
-                   var next = parseInt(active) + 1
-                   console.log(next)
-                   $("[data-step]").removeClass('active')
-                   var next_select = `[data-step=${next}]`
-                   $(next_select).addClass("active")
-             console.log(' input::::::::::::::::::')
-           })
-             // #################################################
-    // form 8 slope
-    $('.form_8_submit').click(function () {
-           
-           var active = $(".form-holder.active").attr("data-step")
-                   var next = parseInt(active) + 1
-                   console.log(next)
-                   $("[data-step]").removeClass('active')
-                   var next_select = `[data-step=${next}]`
-                   $(next_select).addClass("active")
-             console.log(' input::::::::::::::::::')
-           })
-                 // #################################################
-    // form 9 stories
-    $('.form_9_submit').click(function () {
-           
-           var active = $(".form-holder.active").attr("data-step")
-                   var next = parseInt(active) + 1
-                   console.log(next)
-                   $("[data-step]").removeClass('active')
-                   var next_select = `[data-step=${next}]`
-                   $(next_select).addClass("active")
-             console.log(' input::::::::::::::::::')
-           })
-
-
-           // form 10 material
-           $('.form_10_submit').click(function () {
-           
-           var active = $(".form-holder.active").attr("data-step")
-                   var next = parseInt(active) + 1
-                   console.log(next)
-                   $("[data-step]").removeClass('active')
-                   var next_select = `[data-step=${next}]`
-                   $(next_select).addClass("active")
-             console.log(' input::::::::::::::::::')
-           })
-
-           // form 11 time
-           $('.form_11_submit').click(function () {
-           
-           var active = $(".form-holder.active").attr("data-step")
-                   var next = parseInt(active) + 1
-                   console.log(next)
-                   $("[data-step]").removeClass('active')
-                   var next_select = `[data-step=${next}]`
-                   $(next_select).addClass("active")
-             console.log(' input::::::::::::::::::')
-           })
-            // form 12 converstaion
-            $('.form_12_submit').click(function () {
-           
-           var active = $(".form-holder.active").attr("data-step")
-                   var next = parseInt(active) + 1
-                   console.log(next)
-                   $("[data-step]").removeClass('active')
-                   var next_select = `[data-step=${next}]`
-                   $(next_select).addClass("active")
-             console.log(' input::::::::::::::::::')
-           })
-
-             // form 13 appointment
-             $('.form_13_submit_yes').click(function () {
-               
-           var active = $(".form-holder.active").attr("data-step")
-                   var next = parseInt(active) + 1
-                   console.log(next)
-                   $("[data-step]").removeClass('active')
-                   var next_select = `[data-step=${next}]`
-                   $(next_select).addClass("active")
-             console.log(' input::::::::::::::::::')
-             
-             
-            })
-            $('.form_13_submit_no').click(function () {
-                
-                 $('.roofing_form').submit()
-
-             
-        })
-
-    // ##################################################
-    // form 6
-
- 
- 
-    //********************************************************************** to select the category of roofing
-    var input_value = $('#category_selected').val()
-    var str = ""
-    $(".category").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#category_selected').val(str)
-        
-        console.log('category_selected', $('#category_selected').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow')
-        });
-    // *********************************************************************** End
-    // *********************************************************************** Estimation method
-    var input_value = $('#estimate_method').val()
-    var str = ""
-    $(".estimate_type").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the estimate_method', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#estimate_method').val(str)
-        
-        console.log('Estimation', $('#estimate_method').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow')
-        });
-    // *********************************************************************** End
- // *********************************************************************** Insurance Company
- var input_value = $('#insurance_company').val()
-    var str = ""
-    $(".insurance_company_options").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the insurance_company', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#insurance_company').val(str)
-        
-        console.log('Insurance', $('#insurance_company').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow')
-        
-        });
-    // *********************************************************************** End
- // *********************************************************************** Severe Leaks
- var input_value = $('#severe_leaks').val()
-    var str = ""
-    $(".severe_leaks_options").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the insurance_company', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#severe_leaks').val(str)
-        
-        console.log('severe_leaks', $('#severe_leaks').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow')
-        });
-    // *********************************************************************** End
-
-    // *********************************************************************** Slope
- var input_value = $('#slope').val()
-    var str = ""
-    $(".slope_options").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the insurance_company', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#slope').val(str)
-        
-        console.log('slope', $('#slope').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow')
-        });
-    // *********************************************************************** End
-
-       // *********************************************************************** Stories
- var input_value = $('#no_of_stories').val()
-    var str = ""
-    $(".stories_options").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the no_of_stories', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#no_of_stories').val(str)
-        
-        console.log('no_of_stories', $('#no_of_stories').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow')    
-        });
-    // *********************************************************************** End
-       // *********************************************************************** material
-       var input_value = $('#material').val()
-    var str = ""
-    $(".material_options").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the no_of_stories', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#material').val(str)
-        
-        console.log('material', $('#material').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow') 
-        });
-    // *********************************************************************** End
-     // *********************************************************************** starting time 
-     var input_value = $('#starting_time').val()
-    var str = ""
-    $(".starting_time_options").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the no_of_stories', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#starting_time').val(str)
-        
-        console.log('material', $('#starting_time').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow')
-        });
-    // *********************************************************************** End
-          // *********************************************************************** conversation
-     var input_value = $('#conversation').val()
-    var str = ""
-    $(".conversation_options").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the conversation', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#conversation').val(str)
-        
-        console.log('conversation', $('#conversation').val())
-        $(this).parent().parent().children().css('background', 'cadetblue')
-        $(this).parent().css('background', 'yellow')
-        });
-    // *********************************************************************** End
-     // *********************************************************************** appointment
-     var input_value = $('#instant_appointment').val()
-    var str = ""
-    $(".instant_appointment_options").click(function () {
-        console.log('category_selected clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the conversation', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#instant_appointment').val(str)
-        
-        console.log('instant_appointment', $('#instant_appointment').val())
-        });
-    // *********************************************************************** End
-     // *********************************************************************** inspection time
-     var input_value = $('.inspection_time').val()
-    var str = ""
-    $(".inspection_time_options").click(function () {
-        console.log('inspection_time clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the inspection_time', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('.inspection_time').val(str)
-        
-        console.log('inspection_time', $('.inspection_time').val())
-        $('.roofing_form').submit()
-
-        });
-    // *********************************************************************** End
-  
-//    ************************************************************************ Dynamic dates
-const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-
-const d = new Date();
-
-
-for (let i = 0; i < 6; i++) {
-    var day=d.getDay()+i
-    if (day> 6){
-        day=0
-    }
-    let day_name = weekday[day];
-    var dd = d.getDate()+i;
-    console.log('dayname', day_name)
-    console.log('date', dd)
-    $('.appointment_block').append('<div class="form1_roof_subblock date_block" data-toggle="modal" data-target="#myModal" style="margin-right: 3px;">\
-    <div class="appointment_date_options">'+day_name+' </div>\
-    <div class="">'+dd+' </div>\
-     </div>')
-
-}
-$('.date_block').click(function () {
-
-})
-   // *********************************************************************** appointment date
-   var input_value = $('#appointment_date').val()
-    var str = ""
-    $(".appointment_date_options").click(function () {
-        console.log('appointment_date clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the appointment_date', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
-
-            $('#appointment_date').val(str)
-        
-        console.log('appointment_date', $('#appointment_date').val())
-        });
-    // *********************************************************************** End
-
-
-
-</script>
+<script src="{% static 'js/form.js' %}"></script>
 
 {% endblock extrajavascript %}
