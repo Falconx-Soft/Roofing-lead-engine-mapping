@@ -4,138 +4,8 @@
 
 <!-- Specific CSS goes HERE -->
 {% block extrastyle %}
-<link rel="stylesheet" href="{% static '/css/main.css' %}">
 <link rel="stylesheet" href="{% static '/css/form2.css' %}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-<style>
-    .form-holder {
-        padding: 15px;
-        margin-top: 10%;
-        display: none;
-    }
-
-    .active {
-        display: flex;
-    flex-direction: column;
-    }
-   
-    .profile-submit-btn{
-        font-size: initial;
-    }
-    .form_2_submit , .form_3_submit , .form_1_submit, .form_7_submit, .form_4_submit,.form_5_submit,.form_6_submit,.form_8_submit,.form_9_submit,.form_10_submit,.form_11_submit,.form_12_submit {
-    
-    font-size: initial;
-    display: block;
-    text-align: center;
-    font-weight: 600;
-    border: none;
-    font-size: 95%;
-    font-family: inherit;
-    border-radius: 8px;
-    box-shadow: rgba(120, 120, 170, 0.15) 0 2px 16px 0;;
-    text-decoration: none;
-    cursor: pointer;
-    transition-duration: 0.3s;
-    position: relative;
-    background-color: black;
-    color: white;
-    width: 100%;
-    padding: 15px 0;
-    margin: 4% auto;
-font-size: initial;
-}
-.form_2_submit:hover, .form_3_submit:hover, .form_1_submit:hover, .form_7_submit:hover, .form_4_submit:hover{
-    opacity: 0.6;
-    color: white;
-
-}
-.form1_roof_subblock{
-    background: cadetblue;
-    
-    font-size: medium;
-    font-weight: 600;
-
-}
-.price_ranges{
-    background: aliceblue;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.price_range{
-    font-size: large;
-    font-weight: 800;
-}
-.info_input{
-    border: none;
-    outline: none;
-    width: 100%;
-
-}
-.category{
-    padding: 6px;
-    background: cadetblue;
-    cursor: pointer;
-}
-.estimate_type{
-    padding: 10px;
-}
-.insurance_company_options{
-    padding: 10px;
-}
-.severe_leaks_options{
-    padding: 10px;
-}
-.slope_options{
-    padding: 10px;
-}
-.stories_options{
-    padding: 10px;
-}
-.material_options{
-    padding: 10px;
-}
-.starting_time_options{
-    padding: 10px;
-}
-.conversation_options{
-    padding: 10px;
-}
-.instant_appointment_options{
-    padding: 10px;
-}
-.appointment_date_options{
-    padding: 10px;
-}
-.date_block{
-    display: flex;
-    margin-right: 3px;
-    flex-direction: column;
-    align-items: center;
-}
-.appointment_date_options{
-    cursor: pointer;
-}
-.inspection_time_options{
-    cursor: pointer;
-}
-    @media(max-width:800px){
-        .form-holder .package-holder{
-            flex: 0 48%;
-        }
-    }
-    @media(max-width:400px){
-        .form-holder{
-            min-width: 350px;
-        }
-        .form-holder .package-holder{
-            flex: 0 100%;
-        }
-    }
-</style>
 
 {% endblock extrastyle %}
 
@@ -163,6 +33,12 @@ font-size: initial;
             <div class="input-div-logo">
                 <p>Logo</p>
             </div>
+            <div class="progress" style="margin-top: 23px;">
+                <div class="progress-bar" id="progress" role="progressbar" aria-valuenow="70"
+                aria-valuemin="0" aria-valuemax="100" style="width:0%; background-color: rgb(255, 179, 0);">
+                  <span style="color: rgba(33, 33, 33, 0.751);" id="progress-value">0% Complete</span>
+                </div>
+              </div>
             <form action="{% url 'home' %}" method="POST" enctype="multipart/form-data" id="roofing_form">
                 {% csrf_token %}
                 <div class="input-inner-div">
@@ -202,12 +78,8 @@ font-size: initial;
 
                     <div class="input-area inactive-div" id="detail-selection">
                         <div class="multi-input-div">
-                            <h2 class="input-title">What's your first name</h2>
-                            <input class="input-field" name="first_name" id="first-name-entered" type="text" placeholder="Type your answer here...">
-                        </div>
-                        <div class="multi-input-div">
-                            <h2 class="input-title">What's your last name</h2>
-                            <input class="input-field" name="last_name" id="last-name-entered" type="text" placeholder="Type your answer here...">
+                            <h2 class="input-title">What's your name</h2>
+                            <input class="input-field" name="name" id="name-entered" type="text" placeholder="Type your answer here...">
                         </div>
                         <div class="multi-input-div">
                             <h2 class="input-title">What's your phone number</h2>
@@ -263,22 +135,15 @@ font-size: initial;
                                   <div style="    display: flex;justify-content: space-around;">
                                       <div>
                                         <div style="font-weight: 600;" class="inspection_time_options">Morning</div>
-                                        <div>8-10am</div>
-            
+                                        <div>9-12pm</div>
                                       </div>
+
                                       <div>
-                                        <div style="font-weight: 600;" class="inspection_time_options">Afternoon</div>
-                                        <div>12-2pm</div>
-            
+                                        <div style="font-weight:600 ;" class="inspection_time_options">Afternoon</div>
+                                        <div>12-5pm</div>
                                       </div>
-                                      <div>
-                                        <div style="font-weight:600 ;" class="inspection_time_options">Evening</div>
-                                        <div>4-6pm</div>
-            
-                                      </div>
-                                     
+
                                   </div>
-                                  <button type="button" class="btn btn-default" >Schedule my Free Consultation</button>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -289,6 +154,15 @@ font-size: initial;
                             </div>
                           </div>
                         
+                    </div>
+
+                    <!------------------------------------------- approximate size -------------->
+
+                    <div class="input-area inactive-div" id="house-size">
+                        <h2 class="input-title" style="margin-bottom: 30px;">What is the approximate size of your home in sq ft?</h2>
+                        
+                        <input type="range" class="range" name="size_of_house" id="size_of_house" min="0" value="0" max="20000" step="1">
+                        <h1 id="range_output" style="font-size: 31px;">0 ft</h1>
                     </div>
 
                     <!------------------------------------------- working With your insurance company ------>
@@ -310,13 +184,6 @@ font-size: initial;
                             <input type="text" hidden value="" id="instant-quote-selected" name="insurance_company">
                         </div> 
                         
-                    </div>
-
-                    <!------------------------------------------- approximate size -------------->
-
-                    <div class="input-area inactive-div" id="house-size">
-                        <h2 class="input-title">What is the approximate size of your home in sq ft?</h2>
-                        <input class="input-field" name="size_of_house" id="size_of_house" type="text" placeholder="Type your answer here...">
                     </div>
 
                     <!------------------------------------------- severe damage ---------------->
@@ -346,7 +213,7 @@ font-size: initial;
                         <h2 class="input-title">Please provide your best guess with the slope of your roof</h2>
                         
                         <div class="multiselection-div">
-                            <div class="multiselection-div-option" id="roof-slope-option">
+                            <div class="multiselection-div-option" id="roof-slope-option" >
                                 <img src="{% static 'images/option.jpeg' %}" id="roof-slope-img" alt="no image" class="img-option">
                                 <p id="roof-slope-selection">Low</p>
                             </div>

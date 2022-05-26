@@ -9,10 +9,8 @@ def home(request):
         print('category_selected______________',category_selected)
         zipcode= request.POST.get('zipcode')
         print('zipcode_________',zipcode)
-        first_name= request.POST.get('first_name')
-        print('first_name___________',first_name)
-        last_name= request.POST.get('last_name')
-        print('last_name____________',last_name)
+        name= request.POST.get('name')
+        print('name___________',name)
         phone= request.POST.get('phone')
         print('phone-___________________',phone)
         email= request.POST.get('email')
@@ -47,7 +45,7 @@ def home(request):
         appointment_date= request.POST.get('appointment_date')
         print('appointment_date-____________',appointment_date)
 
-        RoofingLead_obj= RoofingLead.objects.create(category_selected= category_selected, zip_code=zipcode, first_name=first_name, last_name=last_name, phone_number=phone, email=email)
+        RoofingLead_obj= RoofingLead.objects.create(category_selected= category_selected, zip_code=zipcode, name=name, phone_number=phone, email=email)
         if insurance_company:
             RoofingLead_obj.insurance_company=insurance_company
             RoofingLead_obj.home_size= size_of_house

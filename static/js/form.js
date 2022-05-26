@@ -3,6 +3,9 @@ const category = document.querySelectorAll("#category");
 const category_img = document.querySelectorAll("#category-img");
 const category_selected = document.querySelectorAll("#category-selected");
 
+let low_price = 0.0;
+let heigh_price = 0.0;
+
 for(let x=0; x<category.length; x++){
     category[x].addEventListener("click", function(){
         console.log("clicked");
@@ -11,12 +14,18 @@ for(let x=0; x<category.length; x++){
         if(category_selected[x].innerHTML == "Repair Roof"){
             document.getElementById("low-price").innerHTML = "$1.48";
             document.getElementById("high-price").innerHTML = "$5.12";
+            low_price = 1.48;
+            heigh_price = 5.12;
         }else if(category_selected[x].innerHTML == "Replace Roof"){
             document.getElementById("low-price").innerHTML = "$2";
             document.getElementById("high-price").innerHTML = "$6.12";
+            low_price = 2;
+            heigh_price = 6.12;
         }else{
             document.getElementById("low-price").innerHTML = "$3";
             document.getElementById("high-price").innerHTML = "$7.12";
+            low_price = 3;
+            heigh_price = 7.12;
         }
 
         noSelection();
@@ -222,9 +231,20 @@ function chooseADaySelection(){
     }
 }
 
+const myRange = document.getElementById("size_of_house");
+const range_output = document.getElementById("range_output");
+
+myRange.oninput = function() {
+    console.log(this.value,"*********");
+    range_output.innerHTML = this.value+" ft";
+}
+
 
 // next-option
 const next_option = document.getElementById("next-option");
+
+const progress = document.getElementById("progress");
+const progress_value = document.getElementById("progress-value");
 
 next_option.addEventListener("click", function(){
     if(document.getElementById("category-selection").classList.contains("active-div")){
@@ -234,6 +254,9 @@ next_option.addEventListener("click", function(){
 
             document.getElementById("zip-code-selection").classList.add("active-div");
             document.getElementById("zip-code-selection").classList.remove("inactive-div");
+
+            progress.style.width = '5%';
+            progress_value.innerHTML = "5% Complete";
         }else{
             window.alert("Please select the category");
         }
@@ -244,12 +267,14 @@ next_option.addEventListener("click", function(){
 
             document.getElementById("detail-selection").classList.add("active-div");
             document.getElementById("detail-selection").classList.remove("inactive-div");
+
+            progress.style.width = '10%';
+            progress_value.innerHTML = "10% Complete";
         }else{
             window.alert("Please enter zip code");
         }
     }else if(document.getElementById("detail-selection").classList.contains("active-div")){
-        if(document.getElementById("first-name-entered").value != "" &&
-            document.getElementById("last-name-entered").value != "" &&
+        if(document.getElementById("name-entered").value != "" &&
             document.getElementById("phone-entered").value != "" &&
             document.getElementById("email-entered").value != ""
             ){
@@ -258,6 +283,9 @@ next_option.addEventListener("click", function(){
 
             document.getElementById("acurate-estimation").classList.add("active-div");
             document.getElementById("acurate-estimation").classList.remove("inactive-div");
+
+            progress.style.width = '20%';
+            progress_value.innerHTML = "20% Complete";
         }else{
             window.alert("Please fill all fields");
         }
@@ -269,20 +297,15 @@ next_option.addEventListener("click", function(){
             if(document.getElementById("accuration-type").value == "Schedule Consultation"){
                 document.getElementById("schedule-consultation").classList.add("active-div");
                 document.getElementById("schedule-consultation").classList.remove("inactive-div");
+                progress.style.width = '90%';
+                progress_value.innerHTML = "90% Complete";
             }else{
-                document.getElementById("instant-quote").classList.add("active-div");
-                document.getElementById("instant-quote").classList.remove("inactive-div");
-            }
-        }else{
-            window.alert("Please select one option");
-        }
-    }else if(document.getElementById("instant-quote").classList.contains("active-div")){
-        if(document.getElementById("instant-quote-selected").value != ""){
-            document.getElementById("instant-quote").classList.remove("active-div");
-            document.getElementById("instant-quote").classList.add("inactive-div");
+                document.getElementById("house-size").classList.add("active-div");
+                document.getElementById("house-size").classList.remove("inactive-div");
 
-            document.getElementById("house-size").classList.add("active-div");
-            document.getElementById("house-size").classList.remove("inactive-div");
+                progress.style.width = '25%';
+                progress_value.innerHTML = "25% Complete";
+            }
         }else{
             window.alert("Please select one option");
         }
@@ -291,8 +314,30 @@ next_option.addEventListener("click", function(){
             document.getElementById("house-size").classList.remove("active-div");
             document.getElementById("house-size").classList.add("inactive-div");
 
+            document.getElementById("low-price").innerHTML="$"+(document.getElementById("size_of_house").value*0.3*low_price).toFixed(2);
+            document.getElementById("high-price").innerHTML="$"+(document.getElementById("size_of_house").value*0.3*heigh_price).toFixed(2);
+
+            low_price = (document.getElementById("size_of_house").value*0.3*low_price).toFixed(2);
+            heigh_price = (document.getElementById("size_of_house").value*0.3*heigh_price).toFixed(2);
+
+            console.log(low_price,heigh_price,"New prices");
+
+            document.getElementById("instant-quote").classList.add("active-div");
+            document.getElementById("instant-quote").classList.remove("inactive-div");
+            progress.style.width = '30%';
+            progress_value.innerHTML = "30% Complete";
+        }else{
+            window.alert("Please select one option");
+        }
+    }else if(document.getElementById("instant-quote").classList.contains("active-div")){
+        if(document.getElementById("instant-quote-selected").value != ""){
+            document.getElementById("instant-quote").classList.remove("active-div");
+            document.getElementById("instant-quote").classList.add("inactive-div");
+
             document.getElementById("severe-damage").classList.add("active-div");
             document.getElementById("severe-damage").classList.remove("inactive-div");
+            progress.style.width = '35%';
+            progress_value.innerHTML = "35% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -303,6 +348,8 @@ next_option.addEventListener("click", function(){
 
             document.getElementById("roof-slope").classList.add("active-div");
             document.getElementById("roof-slope").classList.remove("inactive-div");
+            progress.style.width = '40%';
+            progress_value.innerHTML = "40% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -311,8 +358,29 @@ next_option.addEventListener("click", function(){
             document.getElementById("roof-slope").classList.remove("active-div");
             document.getElementById("roof-slope").classList.add("inactive-div");
 
+            if(document.getElementById("roof-slope-selected").value == "Low"){
+                document.getElementById("low-price").innerHTML="$"+(0.8*low_price).toFixed(2);
+                document.getElementById("high-price").innerHTML="$"+(0.8*heigh_price).toFixed(2);
+
+                low_price = (0.8*low_price).toFixed(2);
+                heigh_price = (0.8*heigh_price).toFixed(2);
+
+            }else if(document.getElementById("roof-slope-selected").value == "High"){
+                document.getElementById("low-price").innerHTML="$"+1.2*low_price;
+                document.getElementById("high-price").innerHTML="$"+1.2*heigh_price;
+
+                low_price = 1.2*low_price;
+                heigh_price = 1.2*heigh_price;
+            }
+
+            console.log(low_price,heigh_price,"New prices");
+
             document.getElementById("home-story").classList.add("active-div");
             document.getElementById("home-story").classList.remove("inactive-div");
+
+            progress.style.width = '45%';
+            progress_value.innerHTML = "45% Complete";
+
         }else{
             window.alert("Please select one option");
         }
@@ -321,8 +389,32 @@ next_option.addEventListener("click", function(){
             document.getElementById("home-story").classList.remove("active-div");
             document.getElementById("home-story").classList.add("inactive-div");
 
+            if(document.getElementById("home-story-selected").value == "Two Story"){
+                document.getElementById("low-price").innerHTML="$"+(0.7*low_price).toFixed(2);
+                document.getElementById("high-price").innerHTML="$"+(0.7*heigh_price).toFixed(2);
+
+                low_price = (0.7*low_price).toFixed(2);
+                heigh_price = (0.7*heigh_price).toFixed(2);
+
+            }else if(document.getElementById("home-story-selected").value == "Two story with basement"){
+                document.getElementById("low-price").innerHTML="$"+(0.6*low_price).toFixed(2);
+                document.getElementById("high-price").innerHTML="$"+(0.6*heigh_price).toFixed(2);
+
+                low_price = (0.6*low_price).toFixed(2);
+                heigh_price = (0.6*heigh_price).toFixed(2);
+            }else if(document.getElementById("home-story-selected").value == "Three Story"){
+                document.getElementById("low-price").innerHTML="$"+(0.5*low_price).toFixed(2);
+                document.getElementById("high-price").innerHTML="$"+(0.5*heigh_price).toFixed(2);
+
+                low_price = (0.5*low_price).toFixed(2);
+                heigh_price = (0.5*heigh_price).toFixed(2);
+            }
+
             document.getElementById("material-quality").classList.add("active-div");
             document.getElementById("material-quality").classList.remove("inactive-div");
+
+            progress.style.width = '50%';
+            progress_value.innerHTML = "50% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -331,8 +423,29 @@ next_option.addEventListener("click", function(){
             document.getElementById("material-quality").classList.remove("active-div");
             document.getElementById("material-quality").classList.add("inactive-div");
 
+            if(document.getElementById("material-quality-selected").value == "Good - 7 year guarantee"){
+                document.getElementById("high-price").innerHTML="$"+(0.2*heigh_price).toFixed(2);
+
+                heigh_price = (0.2*heigh_price).toFixed(2);
+
+            }else if(document.getElementById("material-quality-selected").value == "Better - 15 year guarantee"){
+                document.getElementById("low-price").innerHTML="$"+(1.5*low_price).toFixed(2);
+                document.getElementById("high-price").innerHTML="$"+(0.8*heigh_price).toFixed(2);
+
+                low_price = (1.5*low_price).toFixed(2);
+                heigh_price = (0.8*heigh_price).toFixed(2);
+
+            }else if(document.getElementById("material-quality-selected").value == "Best - 30-year guarantee"){
+                document.getElementById("low-price").innerHTML="$"+(2.5*low_price).toFixed(2);
+
+                low_price = (2.5*low_price).toFixed(2);
+            }
+
             document.getElementById("get-started").classList.add("active-div");
             document.getElementById("get-started").classList.remove("inactive-div");
+
+            progress.style.width = '60%';
+            progress_value.innerHTML = "60% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -343,6 +456,9 @@ next_option.addEventListener("click", function(){
 
             document.getElementById("financing-partners").classList.add("active-div");
             document.getElementById("financing-partners").classList.remove("inactive-div");
+
+            progress.style.width = '70%';
+            progress_value.innerHTML = "70% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -353,6 +469,9 @@ next_option.addEventListener("click", function(){
 
             document.getElementById("choose-a-day").classList.add("active-div");
             document.getElementById("choose-a-day").classList.remove("inactive-div");
+
+            progress.style.width = '85%';
+            progress_value.innerHTML = "85% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -364,6 +483,9 @@ next_option.addEventListener("click", function(){
             if(document.getElementById("choose-a-day-selected").value == "Yes"){
                 document.getElementById("schedule-consultation").classList.add("active-div");
                 document.getElementById("schedule-consultation").classList.remove("inactive-div");
+
+                progress.style.width = '90%';
+                progress_value.innerHTML = "90% Complete";
             }else{
                 document.getElementById("roofing_form").submit();
             }
@@ -392,17 +514,17 @@ const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const d = new Date();
 
 
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 7; i++) {
     var day=d.getDay()+i
     if (day> 6){
         day -= 7
     }
+
     let day_name = weekday[day];
     var dd = d.getDate()+i;
-    console.log('dayname', day_name)
-    console.log('date', dd)
-    $('#dates').append('<div class="multiselection-div-option" data-toggle="modal" data-target="#myModal"><img src="./static/images/option.jpeg" id="" alt="no image" class="img-option"><p id="">'+day_name+':'+dd+'</p></div>')
-
+    if(day_name != "Sun" && day_name != "Sat" && i != 0){
+        $('#dates').append('<div class="multiselection-div-option" data-toggle="modal" data-target="#myModal"><img src="./static/images/option.jpeg" id="" alt="no image" class="img-option"><p id="">'+day_name+':'+dd+'</p></div>')
+    }
 }
 $('.date_block').click(function () {
 
