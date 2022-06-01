@@ -244,14 +244,14 @@ input[type="range"] {
 .multiselection-div-option{
     display: flex;
     flex-direction: column;
-    width: 158px;
+    width: 245px;
     align-items: center;
     cursor: pointer;
     margin-right: 30px;
 }
 
 .img-option{
-    height: 114px;
+    height: 175px;
 }
 
 .multi-input-div{
@@ -259,3 +259,7 @@ input[type="range"] {
 }
 
 /******************************************** Multi selection end **/
+
+.inspection_time_options{
+    cursor: pointer;
+}

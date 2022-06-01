@@ -19,12 +19,12 @@
                 <div class="price-div">
                     <div class="price-div-inner">
                         <h4 class="price"><b id="low-price">$0</b></h4>
-                        <p class="price-detail">per sq. ft</p>
+                        <p class="price-detail" id="sq-1">per sq. ft</p>
                     </div>
                     <h4 class="price"><b> - </b></h4>
                     <div class="price-div-inner">
                         <h4 class="price"><b id="high-price">$0</b></h4>
-                        <p class="price-detail">per sq. ft</p>
+                        <p class="price-detail" id="sq-2">per sq. ft</p>
                     </div>
                 </div>
             </div>
@@ -33,12 +33,20 @@
             <div class="input-div-logo">
                 <p>Logo</p>
             </div>
-            <div class="progress" style="margin-top: 23px;">
+            <div style="
+                       display: flex;
+                       width: 100%;
+                       justify-content: center; 
+                        ">
+                <div class="progress" style="
+                                        margin-top: 23px;
+                                        width: 70%;
+                                        ">
                 <div class="progress-bar" id="progress" role="progressbar" aria-valuenow="70"
                 aria-valuemin="0" aria-valuemax="100" style="width:0%; background-color: rgb(255, 179, 0);">
-                  <span style="color: rgba(33, 33, 33, 0.751);" id="progress-value">0% Complete</span>
                 </div>
-              </div>
+            </div>
+            </div>
             <form action="{% url 'home' %}" method="POST" enctype="multipart/form-data" id="roofing_form">
                 {% csrf_token %}
                 <div class="input-inner-div">
@@ -161,8 +169,8 @@
                     <div class="input-area inactive-div" id="house-size">
                         <h2 class="input-title" style="margin-bottom: 30px;">What is the approximate size of your home in sq ft?</h2>
                         
-                        <input type="range" class="range" name="size_of_house" id="size_of_house" min="0" value="0" max="20000" step="1">
-                        <h1 id="range_output" style="font-size: 31px;">0 ft</h1>
+                        <input type="range" class="range" name="size_of_house" id="size_of_house" min="500" value="0" max="10000" step="1">
+                        <h1 id="range_output" style="font-size: 31px;">500 ft</h1>
                     </div>
 
                     <!------------------------------------------- working With your insurance company ------>
@@ -360,7 +368,7 @@
                         
                     </div>
 
-
+                    <input type="hidden" name="appointment_date" id="appointment_date">
                     <button class="continue-btn" type="button" id="next-option"><i class="fa-solid fa-circle-check yellow"></i>CONTINUE</button>
                 </div>
             </form>

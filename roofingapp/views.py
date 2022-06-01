@@ -1,6 +1,15 @@
 from django.shortcuts import render
 
 from .models import RoofingLead
+from django.conf import settings
+from django.core.mail import send_mail
+
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+from django.core.mail import EmailMessage
 
 # Create your views here.
 def home(request):
@@ -55,9 +64,102 @@ def home(request):
             RoofingLead_obj.material_quality=material
             RoofingLead_obj.starting_time=starting_time
             RoofingLead_obj.conversation_finance=conversation
+
+            # creating pdf
+
+            buf = io.BytesIO()
+
+            c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
+
+            textob = c.beginText()
+            textob.setTextOrigin(inch, inch)
+            textob.setFont("Helvetica", 14)
+
+
+            lines = {
+                "Category selected: "+category_selected,
+                "zipcode: "+zipcode,
+                "Name: "+name,
+                "Phone: "+phone,
+                "email: "+email,
+                "Insurance company: "+insurance_company,
+                "Size of house: "+size_of_house,
+                "Severe leaks: "+severe_leaks,
+                "Slope: "+slope,
+                "No of stories: "+no_of_stories,
+                "Material: "+material,
+                "Starting time: "+starting_time,
+                "Conversation: "+conversation
+            }
+
+            for line in lines:
+                textob.textLine(line)
+
+            c.drawText(textob)
+            c.showPage()
+            c.save()
+            pdf = buf.getvalue()
+            buf.close()
+
+            subject = "New order"
+            message = "There is a new order"
+            emails = [email]
+            mail = EmailMessage(subject, message, settings.EMAIL_HOST_USER,    emails)
+            mail.attach('generated.pdf', pdf, 'application/pdf')
+            
+            mail.send(fail_silently = False)
+            
+
+
             RoofingLead_obj.save()
         if appointment_date:
             RoofingLead_obj.appointment_date=appointment_date
             RoofingLead_obj.appointment_time=inspection_time
+
+            # creating pdf
+
+            buf = io.BytesIO()
+
+            c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
+
+            textob = c.beginText()
+            textob.setTextOrigin(inch, inch)
+            textob.setFont("Helvetica", 14)
+
+            lines = {
+                "Category selected: "+category_selected,
+                "zipcode: "+zipcode,
+                "Name: "+name,
+                "Phone: "+phone,
+                "email: "+email,
+                "Insurance company: "+insurance_company,
+                "Size of house: "+size_of_house,
+                "Severe leaks: "+severe_leaks,
+                "Slope: "+slope,
+                "No of stories: "+no_of_stories,
+                "Material: "+material,
+                "Starting time: "+starting_time,
+                "Conversation: "+conversation,
+                "Appointment date; "+appointment_date,
+                "Inspection time: "+inspection_time
+            }
+
+            for line in lines:
+                textob.textLine(line)
+
+            c.drawText(textob)
+            c.showPage()
+            c.save()
+            pdf = buf.getvalue()
+            buf.close()
+
+            subject = "New order"
+            message = "There is a new order"
+            emails = [email]
+            mail = EmailMessage(subject, message, settings.EMAIL_HOST_USER,    emails)
+            mail.attach('generated.pdf', pdf, 'application/pdf')
+            
+            mail.send(fail_silently = False)
+
             RoofingLead_obj.save()
     return render(request,'roofing/main.html')

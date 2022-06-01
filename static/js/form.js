@@ -8,7 +8,6 @@ let heigh_price = 0.0;
 
 for(let x=0; x<category.length; x++){
     category[x].addEventListener("click", function(){
-        console.log("clicked");
         document.getElementById("category-name").value = category_selected[x].innerHTML;
 
         if(category_selected[x].innerHTML == "Repair Roof"){
@@ -30,7 +29,6 @@ for(let x=0; x<category.length; x++){
 
         noSelection();
         category_img[x].src="./static/images/selected.jpeg";
-        console.log(category_img[x].src);
         
     });
 }
@@ -38,7 +36,6 @@ for(let x=0; x<category.length; x++){
 function noSelection(){
     for(let i=0; i<category_img.length; i++){
         category_img[i].src="./static/images/option.jpeg";
-        console.log(category_img[i].src);
     }
 }
 
@@ -59,7 +56,6 @@ for(let x=0; x<acurate_estimation_option.length; x++){
 function noAcuracy(){
     for(let i=0; i<acurate_estimation_img.length; i++){
         acurate_estimation_img[i].src="./static/images/option.jpeg";
-        console.log(acurate_estimation_img[i].src);
     }
 }
 
@@ -80,7 +76,6 @@ for(let x=0; x<work_insurance_company_option.length; x++){
 function noWorkInsurance(){
     for(let i=0; i<work_insurance_company_option_img.length; i++){
         work_insurance_company_option_img[i].src="./static/images/option.jpeg";
-        console.log(work_insurance_company_option_img[i].src);
     }
 }
 
@@ -101,7 +96,6 @@ for(let x=0; x<severe_damage_option.length; x++){
 function noDamageSelection(){
     for(let i=0; i<severe_damage_img.length; i++){
         severe_damage_img[i].src="./static/images/option.jpeg";
-        console.log(severe_damage_img[i].src);
     }
 }
 
@@ -122,7 +116,6 @@ for(let x=0; x<roof_slope_option.length; x++){
 function roofTopSelection(){
     for(let i=0; i<roof_slope_img.length; i++){
         roof_slope_img[i].src="./static/images/option.jpeg";
-        console.log(roof_slope_img[i].src);
     }
 }
 
@@ -143,7 +136,6 @@ for(let x=0; x<home_story_option.length; x++){
 function homeStorySelection(){
     for(let i=0; i<home_story_img.length; i++){
         home_story_img[i].src="./static/images/option.jpeg";
-        console.log(home_story_img[i].src);
     }
 }
 
@@ -164,7 +156,6 @@ for(let x=0; x<material_quality_option.length; x++){
 function materialQualitySelection(){
     for(let i=0; i<material_quality_img.length; i++){
         material_quality_img[i].src="./static/images/option.jpeg";
-        console.log(material_quality_img[i].src);
     }
 }
 
@@ -185,7 +176,6 @@ for(let x=0; x<get_started_option.length; x++){
 function getStartedSelection(){
     for(let i=0; i<get_started_img.length; i++){
         get_started_img[i].src="./static/images/option.jpeg";
-        console.log(get_started_img[i].src);
     }
 }
 
@@ -206,7 +196,6 @@ for(let x=0; x<financing_partners_option.length; x++){
 function financingPartnersSelection(){
     for(let i=0; i<financing_partners_img.length; i++){
         financing_partners_img[i].src="./static/images/option.jpeg";
-        console.log(financing_partners_img[i].src);
     }
 }
 
@@ -227,7 +216,6 @@ for(let x=0; x<choose_a_day_option.length; x++){
 function chooseADaySelection(){
     for(let i=0; i<choose_a_day_img.length; i++){
         choose_a_day_img[i].src="./static/images/option.jpeg";
-        console.log(choose_a_day_img[i].src);
     }
 }
 
@@ -235,7 +223,6 @@ const myRange = document.getElementById("size_of_house");
 const range_output = document.getElementById("range_output");
 
 myRange.oninput = function() {
-    console.log(this.value,"*********");
     range_output.innerHTML = this.value+" ft";
 }
 
@@ -244,7 +231,6 @@ myRange.oninput = function() {
 const next_option = document.getElementById("next-option");
 
 const progress = document.getElementById("progress");
-const progress_value = document.getElementById("progress-value");
 
 next_option.addEventListener("click", function(){
     if(document.getElementById("category-selection").classList.contains("active-div")){
@@ -256,7 +242,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("zip-code-selection").classList.remove("inactive-div");
 
             progress.style.width = '5%';
-            progress_value.innerHTML = "5% Complete";
         }else{
             window.alert("Please select the category");
         }
@@ -269,7 +254,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("detail-selection").classList.remove("inactive-div");
 
             progress.style.width = '10%';
-            progress_value.innerHTML = "10% Complete";
         }else{
             window.alert("Please enter zip code");
         }
@@ -285,7 +269,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("acurate-estimation").classList.remove("inactive-div");
 
             progress.style.width = '20%';
-            progress_value.innerHTML = "20% Complete";
         }else{
             window.alert("Please fill all fields");
         }
@@ -298,13 +281,11 @@ next_option.addEventListener("click", function(){
                 document.getElementById("schedule-consultation").classList.add("active-div");
                 document.getElementById("schedule-consultation").classList.remove("inactive-div");
                 progress.style.width = '90%';
-                progress_value.innerHTML = "90% Complete";
             }else{
                 document.getElementById("house-size").classList.add("active-div");
                 document.getElementById("house-size").classList.remove("inactive-div");
 
                 progress.style.width = '25%';
-                progress_value.innerHTML = "25% Complete";
             }
         }else{
             window.alert("Please select one option");
@@ -314,18 +295,18 @@ next_option.addEventListener("click", function(){
             document.getElementById("house-size").classList.remove("active-div");
             document.getElementById("house-size").classList.add("inactive-div");
 
-            document.getElementById("low-price").innerHTML="$"+(document.getElementById("size_of_house").value*0.3*low_price).toFixed(2);
-            document.getElementById("high-price").innerHTML="$"+(document.getElementById("size_of_house").value*0.3*heigh_price).toFixed(2);
+            document.getElementById("low-price").innerHTML="$"+(document.getElementById("size_of_house").value*1.3*low_price).toFixed(2);
+            document.getElementById("high-price").innerHTML="$"+(document.getElementById("size_of_house").value*1.3*heigh_price).toFixed(2);
 
-            low_price = (document.getElementById("size_of_house").value*0.3*low_price).toFixed(2);
-            heigh_price = (document.getElementById("size_of_house").value*0.3*heigh_price).toFixed(2);
+            low_price = (document.getElementById("size_of_house").value*1.3*low_price).toFixed(2);
+            heigh_price = (document.getElementById("size_of_house").value*1.3*heigh_price).toFixed(2);
 
-            console.log(low_price,heigh_price,"New prices");
+            document.getElementById("sq-1").style.display = "none";
+            document.getElementById("sq-2").style.display = "none";
 
             document.getElementById("instant-quote").classList.add("active-div");
             document.getElementById("instant-quote").classList.remove("inactive-div");
             progress.style.width = '30%';
-            progress_value.innerHTML = "30% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -337,7 +318,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("severe-damage").classList.add("active-div");
             document.getElementById("severe-damage").classList.remove("inactive-div");
             progress.style.width = '35%';
-            progress_value.innerHTML = "35% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -349,7 +329,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("roof-slope").classList.add("active-div");
             document.getElementById("roof-slope").classList.remove("inactive-div");
             progress.style.width = '40%';
-            progress_value.innerHTML = "40% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -373,13 +352,10 @@ next_option.addEventListener("click", function(){
                 heigh_price = 1.2*heigh_price;
             }
 
-            console.log(low_price,heigh_price,"New prices");
-
             document.getElementById("home-story").classList.add("active-div");
             document.getElementById("home-story").classList.remove("inactive-div");
 
             progress.style.width = '45%';
-            progress_value.innerHTML = "45% Complete";
 
         }else{
             window.alert("Please select one option");
@@ -414,7 +390,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("material-quality").classList.remove("inactive-div");
 
             progress.style.width = '50%';
-            progress_value.innerHTML = "50% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -445,7 +420,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("get-started").classList.remove("inactive-div");
 
             progress.style.width = '60%';
-            progress_value.innerHTML = "60% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -458,7 +432,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("financing-partners").classList.remove("inactive-div");
 
             progress.style.width = '70%';
-            progress_value.innerHTML = "70% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -471,7 +444,6 @@ next_option.addEventListener("click", function(){
             document.getElementById("choose-a-day").classList.remove("inactive-div");
 
             progress.style.width = '85%';
-            progress_value.innerHTML = "85% Complete";
         }else{
             window.alert("Please select one option");
         }
@@ -485,7 +457,6 @@ next_option.addEventListener("click", function(){
                 document.getElementById("schedule-consultation").classList.remove("inactive-div");
 
                 progress.style.width = '90%';
-                progress_value.innerHTML = "90% Complete";
             }else{
                 document.getElementById("roofing_form").submit();
             }
@@ -523,26 +494,16 @@ for (let i = 0; i < 7; i++) {
     let day_name = weekday[day];
     var dd = d.getDate()+i;
     if(day_name != "Sun" && day_name != "Sat" && i != 0){
-        $('#dates').append('<div class="multiselection-div-option" data-toggle="modal" data-target="#myModal"><img src="./static/images/option.jpeg" id="" alt="no image" class="img-option"><p id="">'+day_name+':'+dd+'</p></div>')
+        $('#dates').append('<div class="multiselection-div-option" id="appointment_date_options" data-toggle="modal" data-target="#myModal"><img src="./static/images/option.jpeg" id="" alt="no image" class="img-option"><p id="date-n-day">'+day_name+':'+dd+'</p></div>')
     }
 }
-$('.date_block').click(function () {
 
-})
-   // *********************************************************************** appointment date
-   var input_value = $('#appointment_date').val()
-    var str = ""
-    $(".appointment_date_options").click(function () {
-        console.log('appointment_date clicked::::::::::::::::::::')
-        var id = $(this).text();
-        console.log('text inside the appointment_date', id)
-        console.log(id)
-       
-            str = id 
-            console.log('string value', str)
+const appointment_date_options = document.querySelectorAll("#appointment_date_options");
+const date_n_day = document.querySelectorAll("#date-n-day");
+for(let i=0; i<appointment_date_options.length; i++){
+    appointment_date_options[i].addEventListener("click", function(){
+        document.getElementById("appointment_date").value = date_n_day[i].innerHTML;
+    });
+}
 
-            $('#appointment_date').val(str)
-        
-        console.log('appointment_date', $('#appointment_date').val())
-        });
     // *********************************************************************** End
