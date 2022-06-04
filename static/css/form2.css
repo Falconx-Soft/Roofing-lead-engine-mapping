@@ -263,3 +263,8 @@ input[type="range"] {
 .inspection_time_options{
     cursor: pointer;
 }
+
+.button-div{
+    display: flex;
+    
+}
