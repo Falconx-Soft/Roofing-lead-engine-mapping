@@ -18,7 +18,7 @@ body{
 /**************************************** left portion */
 .detail-div{
     background-color: rgba(33, 33, 33, 0.751);
-    width: 25%;
+    min-width: 25%;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -244,14 +244,14 @@ input[type="range"] {
 .multiselection-div-option{
     display: flex;
     flex-direction: column;
-    width: 245px;
+    width: 158px;
     align-items: center;
     cursor: pointer;
     margin-right: 30px;
 }
 
 .img-option{
-    height: 175px;
+    height: 114px;
 }
 
 .multi-input-div{

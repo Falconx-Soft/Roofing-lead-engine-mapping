@@ -241,6 +241,7 @@ next_option.addEventListener("click", function(){
             document.getElementById("zip-code-selection").classList.add("active-div");
             document.getElementById("zip-code-selection").classList.remove("inactive-div");
 
+            document.getElementById("previous-option").style.display="block";
             progress.style.width = '5%';
         }else{
             window.alert("Please select the category");
@@ -488,7 +489,7 @@ previous_option.addEventListener("click", function(){
 
         document.getElementById("zip-code-selection").classList.remove("active-div");
         document.getElementById("zip-code-selection").classList.add("inactive-div");
-
+        document.getElementById("previous-option").style.display="none";
         progress.style.width = '0%';
     }else if(document.getElementById("detail-selection").classList.contains("active-div")){
 
