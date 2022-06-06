@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} RoofinLead {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static '/css/form2.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+{% endblock extrastyle %}
+
+{% block content %}	
+
+    <div class="container-div">
+        <div class="detail-div">
+            <h1 class="logo">Logo</h1>
+            <div class="price-tag">
+                <h4 class="price"><b id="high-price"><b>Name:</b>{{name}}</b></h4>
+                <h4 class="price"><b id="high-price"><b>Phone:</b>{{phone}}</b></h4>
+                <h4 class="price"><b id="high-price"><b>Email:</b>{{email}}</b></h4>
+            </div>
+        </div>
+        <div class="input-div">
+            <div class="input-div-logo">
+                <p>Logo</p>
+            </div>
+            
+            <div style="height: 100vh; display:flex; justify-content: center; align-items: center;">
+                <h1>Thankyou for placing your order. Kindly visit your e-mail for details.</h1>
+            </div>
+            
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+{% endblock extrajavascript %}

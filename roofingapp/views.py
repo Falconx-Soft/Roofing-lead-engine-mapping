@@ -154,12 +154,27 @@ def home(request):
             buf.close()
 
             subject = "New order"
-            message = "There is a new order"
+            message = "Your order is plased successfuly. Kindly visit pdf to check the details."
             emails = [email]
             mail = EmailMessage(subject, message, settings.EMAIL_HOST_USER,    emails)
             mail.attach('generated.pdf', pdf, 'application/pdf')
             
             mail.send(fail_silently = False)
 
+
+            subject = "New order"
+            message = "There is a new order"
+            emails = ['ibrahim.murad009@gmail.com']
+            mail = EmailMessage(subject, message, settings.EMAIL_HOST_USER,    emails)
+            mail.attach('generated.pdf', pdf, 'application/pdf')
+            
+            mail.send(fail_silently = False)
+
             RoofingLead_obj.save()
+            con={
+                'email':email,
+                'phone':phone,
+                'name':name
+            }
+            return render(request,'roofing/thankyou.html',con)
     return render(request,'roofing/main.html')
