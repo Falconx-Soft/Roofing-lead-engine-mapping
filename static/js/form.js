@@ -10,33 +10,35 @@ for(let x=0; x<category.length; x++){
     category[x].addEventListener("click", function(){
         document.getElementById("category-name").value = category_selected[x].innerHTML;
 
+        noSelection();
+
         if(category_selected[x].innerHTML == "Repair Roof"){
             document.getElementById("low-price").innerHTML = "$1.48";
             document.getElementById("high-price").innerHTML = "$5.12";
             low_price = 1.48;
             heigh_price = 5.12;
+            category_img[x].src="./static/images/repair invert.png";
         }else if(category_selected[x].innerHTML == "Replace Roof"){
             document.getElementById("low-price").innerHTML = "$2";
             document.getElementById("high-price").innerHTML = "$6.12";
             low_price = 2;
             heigh_price = 6.12;
+            category_img[x].src="./static/images/replace invert.png";
         }else{
             document.getElementById("low-price").innerHTML = "$3";
             document.getElementById("high-price").innerHTML = "$7.12";
             low_price = 3;
             heigh_price = 7.12;
+            category_img[x].src="./static/images/install new  invert.png";
         }
-
-        noSelection();
-        category_img[x].src="./static/images/selected.jpeg";
         
     });
 }
 
 function noSelection(){
-    for(let i=0; i<category_img.length; i++){
-        category_img[i].src="./static/images/option.jpeg";
-    }
+    category_img[0].src="./static/images/repair.png";
+    category_img[1].src="./static/images/replace.png";
+    category_img[2].src="./static/images/install new.png";
 }
 
 //Selecting Acuracy
@@ -49,14 +51,17 @@ for(let x=0; x<acurate_estimation_option.length; x++){
     acurate_estimation_option[x].addEventListener("click", function(){
         document.getElementById("accuration-type").value = acurate_estimation_selected[x].innerHTML;
         noAcuracy();
-        acurate_estimation_img[x].src="./static/images/selected.jpeg";
+        if (acurate_estimation_selected[x].innerHTML == "Schedule Consultation"){
+            acurate_estimation_img[x].src="./static/images/schedule consult invert.png";
+        }else{
+            acurate_estimation_img[x].src="./static/images/get an instant quote invert.png";
+        }
     });
 }
 
 function noAcuracy(){
-    for(let i=0; i<acurate_estimation_img.length; i++){
-        acurate_estimation_img[i].src="./static/images/option.jpeg";
-    }
+    acurate_estimation_img[0].src="./static/images/schedule consult.png";
+    acurate_estimation_img[1].src="./static/images/get an instant quote.png";
 }
 
 //Work with insurance company
@@ -69,14 +74,17 @@ for(let x=0; x<work_insurance_company_option.length; x++){
     work_insurance_company_option[x].addEventListener("click", function(){
         document.getElementById("instant-quote-selected").value = work_insurance_company_selection[x].innerHTML;
         noWorkInsurance();
-        work_insurance_company_option_img[x].src="./static/images/selected.jpeg";
+        if(work_insurance_company_selection[x].innerHTML == "Yes"){
+            work_insurance_company_option_img[x].src="./static/images/insurance yes invert.png";
+        }else{
+            work_insurance_company_option_img[x].src="./static/images/insurance no invert.png";
+        }
     });
 }
 
 function noWorkInsurance(){
-    for(let i=0; i<work_insurance_company_option_img.length; i++){
-        work_insurance_company_option_img[i].src="./static/images/option.jpeg";
-    }
+    work_insurance_company_option_img[0].src="./static/images/insurance yes.png";
+    work_insurance_company_option_img[1].src="./static/images/insurance no.png";
 }
 
 //severe-damage
@@ -89,14 +97,17 @@ for(let x=0; x<severe_damage_option.length; x++){
     severe_damage_option[x].addEventListener("click", function(){
         document.getElementById("severe-damage-selected").value = severe_damage_selection[x].innerHTML;
         noDamageSelection();
-        severe_damage_img[x].src="./static/images/selected.jpeg";
+        if(severe_damage_selection[x].innerHTML=="Yes"){
+            severe_damage_img[x].src="./static/images/leaks yes invert.png";
+        }else{
+            severe_damage_img[x].src="./static/images/leaks no invert.png";
+        }
     });
 }
 
 function noDamageSelection(){
-    for(let i=0; i<severe_damage_img.length; i++){
-        severe_damage_img[i].src="./static/images/option.jpeg";
-    }
+    severe_damage_img[0].src="./static/images/leaks yes.png";
+    severe_damage_img[1].src="./static/images/leaks no.png";
 }
 
 //roof-slope
@@ -109,14 +120,20 @@ for(let x=0; x<roof_slope_option.length; x++){
     roof_slope_option[x].addEventListener("click", function(){
         document.getElementById("roof-slope-selected").value = roof_slope_selection[x].innerHTML;
         roofTopSelection();
-        roof_slope_img[x].src="./static/images/selected.jpeg";
+        if(roof_slope_selection[x].innerHTML == "Low"){
+            roof_slope_img[x].src="./static/images/slope low invert.png";
+        }else if(roof_slope_selection[x].innerHTML == "Mid"){
+            roof_slope_img[x].src="./static/images/slope mid invert.png";
+        }else{
+            roof_slope_img[x].src="./static/images/slope high invert.png";
+        }
     });
 }
 
 function roofTopSelection(){
-    for(let i=0; i<roof_slope_img.length; i++){
-        roof_slope_img[i].src="./static/images/option.jpeg";
-    }
+    roof_slope_img[0].src="./static/images/slope low.png";
+    roof_slope_img[1].src="./static/images/slope mid.png";
+    roof_slope_img[2].src="./static/images/slope high.png";
 }
 
 //home-story-option
@@ -129,14 +146,23 @@ for(let x=0; x<home_story_option.length; x++){
     home_story_option[x].addEventListener("click", function(){
         document.getElementById("home-story-selected").value = home_story_selection[x].innerHTML;
         homeStorySelection();
-        home_story_img[x].src="./static/images/selected.jpeg";
+        if(home_story_selection[x].innerHTML=="One Story"){
+            home_story_img[x].src="./static/images/1 story house invert.png";
+        }else if(home_story_selection[x].innerHTML=="Two Story"){
+            home_story_img[x].src="./static/images/2 story house invert.png";
+        }else if(home_story_selection[x].innerHTML=="Two story with basement"){
+            home_story_img[x].src="./static/images/2 story house basement invert.png";
+        }else{
+            home_story_img[x].src="./static/images/3 story house invert.png";
+        }
     });
 }
 
 function homeStorySelection(){
-    for(let i=0; i<home_story_img.length; i++){
-        home_story_img[i].src="./static/images/option.jpeg";
-    }
+    home_story_img[0].src="./static/images/1 story house.png";
+    home_story_img[1].src="./static/images/2 story house.png";
+    home_story_img[2].src="./static/images/2 story house basement.png";
+    home_story_img[3].src="./static/images/3 story house.png";
 }
 
 //material-quality
@@ -149,14 +175,21 @@ for(let x=0; x<material_quality_option.length; x++){
     material_quality_option[x].addEventListener("click", function(){
         document.getElementById("material-quality-selected").value = material_quality_selection[x].innerHTML;
         materialQualitySelection();
-        material_quality_img[x].src="./static/images/selected.jpeg";
+        if(material_quality_selection[x].innerHTML == "Good - 7 year guarantee"){
+            material_quality_img[x].src="./static/images/material good invert.png";
+        }else if(material_quality_selection[x].innerHTML == "Better - 15 year guarantee"){
+            material_quality_img[x].src="./static/images/material better invert.png";
+        }else{
+            material_quality_img[x].src="./static/images/material best invert.png";
+        }
+        
     });
 }
 
 function materialQualitySelection(){
-    for(let i=0; i<material_quality_img.length; i++){
-        material_quality_img[i].src="./static/images/option.jpeg";
-    }
+    material_quality_img[0].src="./static/images/material good.png";
+    material_quality_img[1].src="./static/images/material better.png";
+    material_quality_img[2].src="./static/images/material best.png";
 }
 
 //get started
@@ -169,14 +202,20 @@ for(let x=0; x<get_started_option.length; x++){
     get_started_option[x].addEventListener("click", function(){
         document.getElementById("get-started-selected").value = get_started_selection[x].innerHTML;
         getStartedSelection();
-        get_started_img[x].src="./static/images/selected.jpeg";
+        if(get_started_selection[x].innerHTML == "Immediately"){
+            get_started_img[x].src="./static/images/imediate invert.png";
+        }else if(get_started_selection[x].innerHTML == "1-3 Months"){
+            get_started_img[x].src="./static/images/1 to 3 mo invert.png";
+        }else{
+            get_started_img[x].src="./static/images/3 or more mo invert.png";
+        }
     });
 }
 
 function getStartedSelection(){
-    for(let i=0; i<get_started_img.length; i++){
-        get_started_img[i].src="./static/images/option.jpeg";
-    }
+    get_started_img[0].src="./static/images/immediate.png";
+    get_started_img[1].src="./static/images/1 to 3 mo.png";
+    get_started_img[2].src="./static/images/3 or more mo.png";
 }
 
 //financing-partners
@@ -209,14 +248,17 @@ for(let x=0; x<choose_a_day_option.length; x++){
     choose_a_day_option[x].addEventListener("click", function(){
         document.getElementById("choose-a-day-selected").value = choose_a_day_selection[x].innerHTML;
         chooseADaySelection();
-        choose_a_day_img[x].src="./static/images/selected.jpeg";
+        if(choose_a_day_selection[x].innerHTML == "Yes"){
+            choose_a_day_img[x].src="./static/images/schedule on site inspection yes invert.png";
+        }else{
+            choose_a_day_img[x].src="./static/images/selected.jpeg";
+        }
     });
 }
 
 function chooseADaySelection(){
-    for(let i=0; i<choose_a_day_img.length; i++){
-        choose_a_day_img[i].src="./static/images/option.jpeg";
-    }
+    choose_a_day_img[0].src="./static/images/schedule on site inspection yes.png";
+    choose_a_day_img[1].src="./static/images/option.jpeg";
 }
 
 const myRange = document.getElementById("size_of_house");
