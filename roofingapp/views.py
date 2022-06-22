@@ -10,6 +10,10 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from django.core.mail import EmailMessage
+from io import BytesIO
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa 
 
 # Create your views here.
 def home(request):
@@ -75,37 +79,23 @@ def home(request):
             textob.setTextOrigin(inch, inch)
             textob.setFont("Helvetica", 14)
 
-
             lines = {
-                "Category selected: "+category_selected,
-                "zipcode: "+zipcode,
-                "Name: "+name,
-                "Phone: "+phone,
-                "email: "+email,
-                "Insurance company: "+insurance_company,
-                "Size of house: "+size_of_house,
-                "Severe leaks: "+severe_leaks,
-                "Slope: "+slope,
-                "No of stories: "+no_of_stories,
-                "Material: "+material,
-                "Starting time: "+starting_time,
-                "Conversation: "+conversation
+                "zipcode":zipcode,
+                "Name":name,
+                "Phone":phone,
+                "email":email
             }
 
-            for line in lines:
-                textob.textLine(line)
-
-            c.drawText(textob)
-            c.showPage()
-            c.save()
-            pdf = buf.getvalue()
-            buf.close()
+            template = get_template('roofing/pdf.html')
+            html  = template.render(lines)
+            result = io.BytesIO()
+            pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
 
             subject = "New order"
-            message = "There is a new order"
+            message = "Your order is plased successfuly. Kindly visit pdf to check the details."
             emails = [email]
             mail = EmailMessage(subject, message, settings.EMAIL_HOST_USER,    emails)
-            mail.attach('generated.pdf', pdf, 'application/pdf')
+            mail.attach('generated.pdf', result.getvalue(), 'application/pdf')
             
             mail.send(fail_silently = False)
             
@@ -127,54 +117,41 @@ def home(request):
             textob.setFont("Helvetica", 14)
 
             lines = {
-                "Category selected: "+category_selected,
-                "zipcode: "+zipcode,
-                "Name: "+name,
-                "Phone: "+phone,
-                "email: "+email,
-                "Insurance company: "+insurance_company,
-                "Size of house: "+size_of_house,
-                "Severe leaks: "+severe_leaks,
-                "Slope: "+slope,
-                "No of stories: "+no_of_stories,
-                "Material: "+material,
-                "Starting time: "+starting_time,
-                "Conversation: "+conversation,
-                "Appointment date; "+appointment_date,
-                "Inspection time: "+inspection_time
+                "zipcode":zipcode,
+                "Name":name,
+                "Phone":phone,
+                "email":email
             }
 
-            for line in lines:
-                textob.textLine(line)
-
-            c.drawText(textob)
-            c.showPage()
-            c.save()
-            pdf = buf.getvalue()
-            buf.close()
+            template = get_template('roofing/pdf.html')
+            html  = template.render(lines)
+            result = io.BytesIO()
+            pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
 
             subject = "New order"
             message = "Your order is plased successfuly. Kindly visit pdf to check the details."
             emails = [email]
             mail = EmailMessage(subject, message, settings.EMAIL_HOST_USER,    emails)
-            mail.attach('generated.pdf', pdf, 'application/pdf')
-            
-            mail.send(fail_silently = False)
-
-
-            subject = "New order"
-            message = "There is a new order"
-            emails = ['ibrahim.murad009@gmail.com']
-            mail = EmailMessage(subject, message, settings.EMAIL_HOST_USER,    emails)
-            mail.attach('generated.pdf', pdf, 'application/pdf')
+            mail.attach('generated.pdf', result.getvalue(), 'application/pdf')
             
             mail.send(fail_silently = False)
 
             RoofingLead_obj.save()
-            con={
-                'email':email,
+
+            con = {
+                'name':name,
                 'phone':phone,
-                'name':name
+                'email':email
             }
+
             return render(request,'roofing/thankyou.html',con)
     return render(request,'roofing/main.html')
+
+
+def pdf(request):
+    context = {
+        'Name': 'Tayyab',
+        'Phone': '03344227779',
+        'email': 'abc@gmail.com'
+    }
+    return render(request,'roofing/pdf.html', context)
