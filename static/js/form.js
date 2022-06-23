@@ -228,14 +228,17 @@ for(let x=0; x<financing_partners_option.length; x++){
     financing_partners_option[x].addEventListener("click", function(){
         document.getElementById("financing-partners-selected").value = financing_partners_selection[x].innerHTML;
         financingPartnersSelection();
-        financing_partners_img[x].src="./static/images/selected.jpeg";
+        if (financing_partners_selection[x].innerHTML == "Yes"){
+            financing_partners_img[x].src="./static/images/thumbs up invert.png";
+        }else{
+            financing_partners_img[x].src="./static/images/thumbs down invert.png";
+        }
     });
 }
 
 function financingPartnersSelection(){
-    for(let i=0; i<financing_partners_img.length; i++){
-        financing_partners_img[i].src="./static/images/option.jpeg";
-    }
+    financing_partners_img[0].src="./static/images/thumbs up.png";
+    financing_partners_img[1].src="./static/images/thumbs down.png";
 }
 
 //choose-a-day
@@ -251,14 +254,14 @@ for(let x=0; x<choose_a_day_option.length; x++){
         if(choose_a_day_selection[x].innerHTML == "Yes"){
             choose_a_day_img[x].src="./static/images/schedule on site inspection yes invert.png";
         }else{
-            choose_a_day_img[x].src="./static/images/selected.jpeg";
+            choose_a_day_img[x].src="./static/images/thumbs down invert.png";
         }
     });
 }
 
 function chooseADaySelection(){
     choose_a_day_img[0].src="./static/images/schedule on site inspection yes.png";
-    choose_a_day_img[1].src="./static/images/option.jpeg";
+    choose_a_day_img[1].src="./static/images/thumbs down.png";
 }
 
 const myRange = document.getElementById("size_of_house");
